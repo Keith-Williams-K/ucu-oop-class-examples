@@ -61,6 +61,11 @@ class MusicSession(Entertainment):  # Sibling: hierarchical inheritance.
         return 100
 
 
+class ComedyClip(Entertainment):  # Short comedy clip with a fixed data cost.
+    def data_cost(self):
+        return 50
+
+
 class DataSaverMovie(StreamedMovie):  # Three levels: multilevel inheritance.
     def data_cost(self):
         return super().data_cost() // 2  # Extend, rather than duplicate, pricing.
@@ -116,7 +121,8 @@ def main():
     print("=== HOSTEL MOVIE NIGHT ===")
     print("Faith promised a movie night. Her bundle has other ideas.")
     options = [StreamedMovie("Mukono Mystery"), MusicSession("Afrobeats break"),
-               FeaturedMovie("Mukono Mystery: data saver"), StorytellingCircle()]
+               FeaturedMovie("Mukono Mystery: data saver"), StorytellingCircle(),
+               ComedyClip("Campus comedy clip")]
     show_options(options)  # StorytellingCircle works too: duck typing.
     faith = MovieNight("Faith", 500)
     david = MovieNight("David", 200)  # Separate bundles; no shared list bug.
