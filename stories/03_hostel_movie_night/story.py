@@ -25,6 +25,12 @@ class DataBundle:
         self.remaining = self.remaining - amount
         return True
 
+    def add_data(self, amount):  # Accept only positive data shares.
+        if amount <= 0:
+            return False
+        self.remaining = self.remaining + amount
+        return True
+
 
 # ACT 2: Every entertainment option answers the same two questions.
 class Entertainment(ABC):
