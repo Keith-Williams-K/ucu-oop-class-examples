@@ -65,6 +65,15 @@ class AvocadoRolex(Rolex):  # Meal -> Rolex -> AvocadoRolex: multilevel.
         return super().price() + 500  # Extend a working parent's method.
 
 
+class GroundnutRolex(Rolex):  # Added for Extension 6
+    def __init__(self):
+        super().__init__()
+        self.name = "Groundnut rolex"
+
+    def price(self):
+        return super().price() + 700
+
+
 # ACT 3: A small extra ability; two parents deliberately offer the SAME method.
 class HypeMixin:
     def describe(self):
@@ -112,15 +121,20 @@ def show_menu(items):  # Ordinary function; a list + loop recall Week 1.
 # ACT 5: The complete story, from the first choice to the ending.
 def main():
     print("=== THE ROLEX RESCUE ===")
-    menu = [Rolex(), Kikomando("Kikomando"), FeaturedRolex(), HomePackedLunch()]
+
+    # GroundnutRolex() has been appended to the end of the menu list here
+    menu = [Rolex(), Kikomando("Kikomando"), FeaturedRolex(), HomePackedLunch(), GroundnutRolex()]
     show_menu(menu)  # The unrelated packed lunch works too: duck typing.
+
     sarah = LunchBreak("Sarah", 5000)
     joel = LunchBreak("Joel", 3000)  # A second object has a DIFFERENT wallet.
+
     print(sarah.buy(menu[2]))
     print(sarah.buy(menu[1]))  # Refused; balance and order count must stay put.
     print(joel.buy(menu[1]))
     print(f"Sarah: UGX {sarah.wallet.balance:,}; orders: {sarah.order_count}")
     print(f"Joel: UGX {joel.wallet.balance:,}; orders: {joel.order_count}")
+
     print("MRO (look left to right):")
     for parent in FeaturedRolex.__mro__:
         print(parent.__name__)
