@@ -115,8 +115,7 @@ def main():
     print("=== HOSTEL MOVIE NIGHT ===")
     print("Faith promised a movie night. Her bundle has other ideas.")
     options = [StreamedMovie("Mukono Mystery"), MusicSession("Afrobeats break"),
-               FeaturedMovie("Mukono Mystery: data saver"), StorytellingCircle(),
-               ComedyClip("Campus comedy clip")]
+               FeaturedMovie("Mukono Mystery: data saver"), StorytellingCircle()]
     show_options(options)  # StorytellingCircle works too: duck typing.
     faith = MovieNight("Faith", 500)
     david = MovieNight("David", 200)  # Separate bundles; no shared list bug.
