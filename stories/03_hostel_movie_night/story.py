@@ -106,6 +106,11 @@ def show_options(options):  # Week 1 function + list + loop.
         print(option.describe())  # Same call, different results: polymorphism.
 
 
+def available(options, megabytes):
+    """Return options whose data cost fits the available megabytes."""
+    return [option for option in options if option.data_cost() <= megabytes]
+
+
 def main():
     print("=== HOSTEL MOVIE NIGHT ===")
     print("Faith promised a movie night. Her bundle has other ideas.")
